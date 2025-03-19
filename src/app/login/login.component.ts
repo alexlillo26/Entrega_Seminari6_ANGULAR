@@ -55,13 +55,13 @@ export class LoginComponent implements OnInit {
 
     const loginData = this.formularioLogin.value;
 
-    this.apiService.login(loginData).subscribe({
-      next: (response) => {
+    this.apiService.login(loginData.email, loginData.password).subscribe({
+      next: (response: any) => {
         console.log('Login exitoso:', response);
         this.exportLoggedIn.emit(true);
       
       },
-      error: (error) => {
+      error: (error: any) => {
         console.error('Error en el login:', error);
         alert('Error en el login, verifica tus credenciales');
       }
